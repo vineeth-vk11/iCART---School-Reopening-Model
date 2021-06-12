@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'CSS/style.css'%}" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css" />
+  <!-- <link rel="stylesheet" href="css/ion.rangeSlider.css"/> -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&family=Roboto+Condensed:wght@300&display=swap"
+    rel="stylesheet" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="maind">
+    <div class="top">
+      <img src="{% static 'IMAGES/logo.png'%}" alt="Main image" id="img1">
+      <div class="navbar mx-5">
+        <ul class="nav navv nav-tabs flex-rows justify-content-around">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Parameters</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Output</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom d-flex justify-content-center">
+      <form method="post" class="mb-3 align-self-center flex-grow-1 post-form" id="form1">
+        {% csrf_token %}
+        <div class="mb-3 d-flex justify-content-between cont">
+          <label for="student" class="form-label">Number of Students</label>
+          {{form.student_no}}
+        </div>
+        <div>
+          <p>Age Limit of Students</p>
+          {{form.student_age_limit}}
+        </div>
+
+        <div class="mb-3 mt-5 d-flex justify-content-between cont">
+          <label for="teacher" class="form-label">Number of Teachers</label>
+          {{form.teacher_no}}
+        </div>
+        <div>
+          <p>Age Limit of Teachers</p>
+          {{form.teacher_age_limit}}
+        </div>
+
+        <div class="mb-3 mt-5 d-flex justify-content-between cont">
+          <label for="nonteacher" class="form-label">Non Teaching Staff</label>
+          {{form.non_teacher_no}}
+        </div>
+        <div>
+          <p>Age Limit of Non Teaching Staff</p>
+          {{form.non_teacher_age_limit}}
+        </div>
+        <div class="mb-3 mt-5 d-flex justify-content-between cont">
+          <label for="batch" class="form-label">Average Batch Size</label>
+          {{form.batch_size}}
+        </div>
+        <div class="mb-3 mt-5 d-flex justify-content-between cont">
+          <label for="infection" class="form-label">Infection Prop</label>
+          {{form.infection}}
+        </div>
+        <div class="mb-3 mt-5 d-flex justify-content-between cont">
+          <label for="sensitivity" class="form-label">Kit Sensitivity</label>
+          {{form.sensitivity}}
+        </div>
+        <div class="mb-3 mt-5 d-flex justify-content-between cont">
+          <label for="specificity" class="form-label">Kit Specificity</label>
+          {{form.specificity}}
+        </div>
+        <a href=""><button value="save" type="submit" class="btn btn-primary" id="submitt"
+            style="left:40%;position: relative;">Run</button></a>
+      </form>
+      <div class="">
+        {% if not data %}
+        <img src="{% static 'IMAGES/graph.jpg'%}" alt="" style="width: 50%;" id="img3">
+        {% else %}
+        <img src="data:image/png;base64, {{ data }}" alt="" style="width: 100%;" id="img2">
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+  <script src="{% static 'JS/main.js'%}"></script>
+  <!-- <script src="js/function.js"></script> -->
+</body>
+
+</html>
